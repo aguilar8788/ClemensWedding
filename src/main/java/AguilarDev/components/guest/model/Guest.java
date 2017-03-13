@@ -3,9 +3,11 @@ package AguilarDev.components.guest.model;
 import AguilarDev.components.contactInfo.model.ContactInfo;
 import AguilarDev.components.song.model.Song;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
+@Document
 public class Guest {
     @Id
     public String id;

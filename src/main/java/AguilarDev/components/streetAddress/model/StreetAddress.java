@@ -1,6 +1,14 @@
 package AguilarDev.components.streetAddress.model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document
 public class StreetAddress {
+
+    @Id
+    private String id;
+
     private String line1;
     private String line2;
     private String city;
@@ -13,6 +21,10 @@ public class StreetAddress {
         this.city = city;
         this.state = state;
         this.zip = zip;
+    }
+
+    public StreetAddress() {
+
     }
 
     public String getLine1() {
@@ -35,10 +47,31 @@ public class StreetAddress {
         return zip;
     }
 
+    public void setLine1(String line1) {
+        this.line1 = line1;
+    }
+
+    public void setLine2(String line2) {
+        this.line2 = line2;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public void setZip(String zip) {
+        this.zip = zip;
+    }
+
     @Override
     public String toString() {
         return "StreetAddress{" +
-                "line1='" + line1 + '\'' +
+                "id='" + id + '\'' +
+                ", line1='" + line1 + '\'' +
                 ", line2='" + line2 + '\'' +
                 ", city='" + city + '\'' +
                 ", state='" + state + '\'' +
@@ -53,6 +86,7 @@ public class StreetAddress {
 
         StreetAddress that = (StreetAddress) o;
 
+        if (id != null ? !id.equals(that.id) : that.id != null) return false;
         if (line1 != null ? !line1.equals(that.line1) : that.line1 != null) return false;
         if (line2 != null ? !line2.equals(that.line2) : that.line2 != null) return false;
         if (city != null ? !city.equals(that.city) : that.city != null) return false;
@@ -63,7 +97,8 @@ public class StreetAddress {
 
     @Override
     public int hashCode() {
-        int result = line1 != null ? line1.hashCode() : 0;
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (line1 != null ? line1.hashCode() : 0);
         result = 31 * result + (line2 != null ? line2.hashCode() : 0);
         result = 31 * result + (city != null ? city.hashCode() : 0);
         result = 31 * result + (state != null ? state.hashCode() : 0);

@@ -1,7 +1,8 @@
 package AguilarDev.controller;
 
-import AguilarDev.components.guest.model.Guest;
-import AguilarDev.components.guest.repository.GuestRepository;
+import AguilarDev.components.contactInfo.model.ContactInfo;
+import AguilarDev.components.contactInfo.repository.ContactInfoRepository;
+import AguilarDev.components.streetAddress.model.StreetAddress;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,20 +13,38 @@ import java.util.List;
 public class GuestListController {
 
     @Autowired
-    private GuestRepository guestRepo;
-
-//    @RequestMapping("/guest")
-//    public Guest guest(@RequestParam("id") String id) {
-//        return new Guest(id, null, 1, null, null);
-//    }
+    private ContactInfoRepository contactRepo;
 
     @RequestMapping(method= RequestMethod.GET)
-    public List<Guest> getAll() {
-        return guestRepo.findAll();
+    public List<ContactInfo> getAll() {
+        return contactRepo.findAll();
     }
 
     @RequestMapping(method=RequestMethod.POST)
-    public work create(@RequestBody work work) {
-        return repo.save(work);
+    public ContactInfo create(@RequestBody ContactInfo contactInfo) {
+        return contactRepo.save(contactInfo);
+    }
+
+    @RequestMapping(method=RequestMethod.DELETE, value="{id}")
+    public List<ContactInfo> delete(@PathVariable String id) {
+        contactRepo.delete(id);
+        return contactRepo.findAll();
+    }
+
+    @RequestMapping(method=RequestMethod.PUT, value="{id}")
+    public ContactInfo update(@PathVariable String id, @RequestBody ContactInfo contactInfo) {
+        ContactInfo update = contactRepo.findOne(id);
+        update.setFirstName(contactInfo.getFirstName());
+        update.setLastName(contactInfo.getLastName());
+        update.setEmailAddress(contactInfo.getEmailAddress());
+        update.setPhoneNumber(contactInfo.getPhoneNumber());
+        update.setStreetAddress(new StreetAddress(
+                contactInfo.getStreetAddress().getLine1(),
+                contactInfo.getStreetAddress().getLine2(),
+                contactInfo.getStreetAddress().getCity(),
+                contactInfo.getStreetAddress().getState(),
+                contactInfo.getStreetAddress().getZip()
+        ));
+        return contactRepo.save(update);
     }
 }
