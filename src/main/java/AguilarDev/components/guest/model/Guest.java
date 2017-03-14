@@ -17,12 +17,7 @@ public class Guest {
     private List<String> mealChoice;
     private List<Song> songRequests;
 
-    public Guest(String id, ContactInfo contactInfo, int numberOfAttending, List<String> mealChoice, List<Song> songRequests) {
-        this.id = id;
-        this.contactInfo = contactInfo;
-        this.numberOfAttending = numberOfAttending;
-        this.mealChoice = mealChoice;
-        this.songRequests = songRequests;
+    public Guest() {
     }
 
     public String getId() {
@@ -43,6 +38,26 @@ public class Guest {
 
     public List<Song> getSongRequests() {
         return songRequests;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setContactInfo(ContactInfo contactInfo) {
+        this.contactInfo = contactInfo;
+    }
+
+    public void setNumberOfAttending(int numberOfAttending) {
+        this.numberOfAttending = numberOfAttending;
+    }
+
+    public void setMealChoice(List<String> mealChoice) {
+        this.mealChoice = mealChoice;
+    }
+
+    public void setSongRequests(List<Song> songRequests) {
+        this.songRequests = songRequests;
     }
 
     @Override
