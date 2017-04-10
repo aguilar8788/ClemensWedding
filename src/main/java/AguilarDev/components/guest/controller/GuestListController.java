@@ -16,6 +16,8 @@ public class GuestListController {
 
     @RequestMapping(method= RequestMethod.GET)
     public List<Guest> getAll() {
+
+
         return guestRepo.findAll();
     }
 
@@ -35,6 +37,7 @@ public class GuestListController {
         Guest update = guestRepo.findOne(id);
 
         update.setContactInfo(guest.getContactInfo());
+        update.setAttending(guest.getAttending());
         update.setNumberOfAttending(guest.getNumberOfAttending());
         update.setMealChoice(guest.getMealChoice());
         update.setSongRequests(guest.getSongRequests());

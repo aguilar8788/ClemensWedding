@@ -29,6 +29,10 @@ repositories {
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-data-mongodb')
 	compile('org.springframework.boot:spring-boot-starter-web')
+	compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.9.0.pr2'
 	runtime('org.springframework.boot:spring-boot-devtools')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
+
+
+
