@@ -20,9 +20,11 @@ public class GuestListController {
 
         return guestRepo.findAll();
     }
-
+    @CrossOrigin(origins = "http://localhost:3000")
     @RequestMapping(method=RequestMethod.POST)
     public Guest create(@RequestBody Guest guest) {
+
+        System.out.println(guest);
         return guestRepo.save(guest);
     }
 
@@ -38,7 +40,7 @@ public class GuestListController {
 
         update.setContactInfo(guest.getContactInfo());
         update.setAttending(guest.getAttending());
-        update.setNumberOfAttending(guest.getNumberOfAttending());
+        update.setPlusOne(guest.getPlusOne());
         update.setMealChoice(guest.getMealChoice());
         update.setSongRequests(guest.getSongRequests());
 

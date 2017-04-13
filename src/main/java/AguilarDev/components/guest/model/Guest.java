@@ -14,7 +14,7 @@ public class Guest {
 
     private ContactInfo contactInfo;
     private String attending;
-    private int numberOfAttending;
+    private String plusOne;
     private List<String> mealChoice;
     private List<Song> songRequests;
 
@@ -29,8 +29,8 @@ public class Guest {
         return contactInfo;
     }
 
-    public int getNumberOfAttending() {
-        return numberOfAttending;
+    public String getPlusOne() {
+        return plusOne;
     }
 
     public List<String> getMealChoice() {
@@ -53,8 +53,8 @@ public class Guest {
         this.contactInfo = contactInfo;
     }
 
-    public void setNumberOfAttending(int numberOfAttending) {
-        this.numberOfAttending = numberOfAttending;
+    public void setPlusOne(String plusOne) {
+        this.plusOne = plusOne;
     }
 
     public void setMealChoice(List<String> mealChoice) {
@@ -75,7 +75,7 @@ public class Guest {
                 "id='" + id + '\'' +
                 ", contactInfo=" + contactInfo +
                 ", attending='" + attending + '\'' +
-                ", numberOfAttending=" + numberOfAttending +
+                ", plusOne=" + plusOne +
                 ", mealChoice=" + mealChoice +
                 ", songRequests=" + songRequests +
                 '}';
@@ -88,10 +88,10 @@ public class Guest {
 
         Guest guest = (Guest) o;
 
-        if (numberOfAttending != guest.numberOfAttending) return false;
         if (id != null ? !id.equals(guest.id) : guest.id != null) return false;
         if (contactInfo != null ? !contactInfo.equals(guest.contactInfo) : guest.contactInfo != null) return false;
         if (attending != null ? !attending.equals(guest.attending) : guest.attending != null) return false;
+        if (plusOne != null ? !plusOne.equals(guest.plusOne) : guest.plusOne != null) return false;
         if (mealChoice != null ? !mealChoice.equals(guest.mealChoice) : guest.mealChoice != null) return false;
         return songRequests != null ? songRequests.equals(guest.songRequests) : guest.songRequests == null;
 
@@ -102,7 +102,7 @@ public class Guest {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (contactInfo != null ? contactInfo.hashCode() : 0);
         result = 31 * result + (attending != null ? attending.hashCode() : 0);
-        result = 31 * result + numberOfAttending;
+        result = 31 * result + (plusOne != null ? plusOne.hashCode() : 0);
         result = 31 * result + (mealChoice != null ? mealChoice.hashCode() : 0);
         result = 31 * result + (songRequests != null ? songRequests.hashCode() : 0);
         return result;
